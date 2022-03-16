@@ -4,6 +4,7 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitrecyclerview.data.model.Album
 import com.example.retrofitrecyclerview.data.model.services.AlbumService
@@ -11,24 +12,34 @@ import com.example.retrofitrecyclerview.databinding.ItemBinding
 import com.squareup.picasso.Picasso
 
 class AlbumAdapter(
-    var dataSEt: List<Album>
+    var dataSEt: MutableList<Album>,val listener:MainActivity
 ) : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
-    inner class AlbumViewHolder(val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root)
-        {
 
-        fun bind(data:Album)
-        {
-            binding.firstTV.text=data.id.toString()
-            binding.secondTV.text=data.title
+    inner class AlbumViewHolder(val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) ,View.OnClickListener {
+        init {
+            binding.image.setOnClickListener(this)
+        }
+        fun bind(data: Album) {
+            binding.firstTV.text = data.id.toString()
+            binding.secondTV.text = data.title
             Picasso.get().load(data.url).into(binding.image)
+
 
         }
 
-
-
-
-
+        override fun onClick(p0: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION)
+                listener.expenseOnItemClick(position)
+        }
     }
+    interface OnExpenseItemClickListener{
+        fun expenseOnItemClick(position:Int)
+    }
+
+
+
+
 
 
 
@@ -57,4 +68,7 @@ class AlbumAdapter(
 
     override fun getItemCount(): Int {
         return dataSEt.size
-    }}
+    }
+
+
+  }

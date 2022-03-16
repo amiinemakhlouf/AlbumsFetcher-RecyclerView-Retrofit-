@@ -8,5 +8,5 @@ import retrofit2.http.GET
 interface AlbumDTO {
 
     @GET(".")
-     suspend fun getAllAlbums(): Response<List<Album>>
+     suspend fun getAllAlbums(): Response<MutableList<Album>>
 }
