@@ -23,6 +23,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class MainActivity : AppCompatActivity(),AlbumAdapter.OnExpenseItemClickListener {
     private lateinit var binding :ActivityMainBinding
@@ -73,15 +74,18 @@ class MainActivity : AppCompatActivity(),AlbumAdapter.OnExpenseItemClickListener
    private fun onSwipeRV(){
         val simpleCallback = object :
             ItemTouchHelper.SimpleCallback(
-                0,
-                ItemTouchHelper.LEFT
+                ItemTouchHelper.UP,  // drag and drop
+                ItemTouchHelper.LEFT // swiping
             ) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder,
             ): Boolean {
-                TODO("Not yet implemented")
+
+               // Collections.swap(dataSet,viewHolder.adapterPosition,target.adapterPosition) useful when we need to save state of dataset in viewmodel
+                adapter.notifyItemMoved(viewHolder.adapterPosition,target.adapterPosition)
+                return  false
             }
 
 
