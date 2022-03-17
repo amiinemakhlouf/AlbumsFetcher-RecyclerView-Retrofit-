@@ -19,13 +19,11 @@ class AlbumAdapter(
         init {
             binding.image.setOnClickListener(this)
         }
-        fun bind(data: Album) {
-            binding.firstTV.text = data.id.toString()
-            binding.secondTV.text = data.title
-            Picasso.get().load(data.url).into(binding.image)
 
 
-        }
+
+
+
 
         override fun onClick(p0: View?) {
             val position = adapterPosition
@@ -59,8 +57,14 @@ class AlbumAdapter(
     }
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
-        val p = dataSEt[position]
-            holder.bind(dataSEt[position])
+        val album = dataSEt[position]
+            holder.binding.apply {
+                firstTV.text = album.id.toString()
+                secondTV.text = album.title
+                Picasso.get().load(album.url).into(image)
+
+            }
+
 
 
 
