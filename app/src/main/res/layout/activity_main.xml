@@ -13,7 +13,6 @@
         android:layoutAnimation="@anim/animation"
         android:clipToPadding="false"
         android:paddingTop="5dp"
-
         tools:listitem="@layout/item"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

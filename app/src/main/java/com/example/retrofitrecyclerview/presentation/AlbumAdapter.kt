@@ -44,6 +44,7 @@ class AlbumAdapter(
 
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
 
 
@@ -59,10 +60,10 @@ class AlbumAdapter(
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         val p = dataSEt[position]
-        holder.itemView.apply {
             holder.bind(dataSEt[position])
 
-        }
+
+
     }
 
 

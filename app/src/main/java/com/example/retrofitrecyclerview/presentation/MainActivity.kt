@@ -4,6 +4,7 @@ import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -13,6 +14,8 @@ import com.example.retrofitrecyclerview.R
 import com.example.retrofitrecyclerview.data.model.Album
 import com.example.retrofitrecyclerview.data.model.services.AlbumService
 import com.example.retrofitrecyclerview.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
@@ -53,6 +56,12 @@ class MainActivity : AppCompatActivity(),AlbumAdapter.OnExpenseItemClickListener
             layoutManager = LinearLayoutManager(context)
             this.adapter = adapter
         }
+
+        onSwipeRV()
+
+
+        }
+   private fun onSwipeRV(){
         val simpleCallback = object :
             ItemTouchHelper.SimpleCallback(
                 0,
@@ -73,8 +82,19 @@ class MainActivity : AppCompatActivity(),AlbumAdapter.OnExpenseItemClickListener
                     ItemTouchHelper.LEFT -> {
                         // Do something when a user swept left
                         Toast.makeText(this@MainActivity,"hello",Toast.LENGTH_LONG).show()
-                        dataset.removeAt(position)
+                        val album= dataSet[position]
+                        dataSet.removeAt(position)
                         adapter.notifyDataSetChanged()
+
+                       Snackbar.make(
+                           binding.rv,"album removed",
+                           LENGTH_LONG)
+                           .setAction("undo", View.OnClickListener {
+                               dataSet.add(position,album)
+                               adapter.notifyItemInserted(position)
+                           }).show()
+
+
                     }
                     /*ItemTouchHelper.RIGHT -> {
                         // Do something when a user swept right
@@ -87,6 +107,8 @@ class MainActivity : AppCompatActivity(),AlbumAdapter.OnExpenseItemClickListener
 
 
     }
+
+
 
     override fun expenseOnItemClick(position: Int) {
 
