@@ -14,6 +14,7 @@ import com.example.retrofitrecyclerview.R
 import com.example.retrofitrecyclerview.data.model.Album
 import com.example.retrofitrecyclerview.data.model.services.AlbumService
 import com.example.retrofitrecyclerview.databinding.ActivityMainBinding
+import com.example.retrofitrecyclerview.presentation.helper.SimpleDividerItemDecoration
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
@@ -55,9 +56,17 @@ class MainActivity : AppCompatActivity(),AlbumAdapter.OnExpenseItemClickListener
         binding.rv.apply {
             layoutManager = LinearLayoutManager(context)
             this.adapter = adapter
+            // add divider between items  , we create a simple divider class and drawble file to achieve thid behaviour
+            addItemDecoration(SimpleDividerItemDecoration(this@MainActivity,R.drawable.line_divider))
+
+
         }
 
+
+
+
         onSwipeRV()
+
 
 
         }
