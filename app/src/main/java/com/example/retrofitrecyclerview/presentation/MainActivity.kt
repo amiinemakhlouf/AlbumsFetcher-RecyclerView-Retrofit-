@@ -1,29 +1,25 @@
 package com.example.retrofitrecyclerview.presentation
 
-import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitrecyclerview.R
-import com.example.retrofitrecyclerview.data.model.Album
-import com.example.retrofitrecyclerview.data.model.services.AlbumService
+import com.example.retrofitrecyclerview.data.Album
+import com.example.retrofitrecyclerview.data.services.AlbumService
 import com.example.retrofitrecyclerview.databinding.ActivityMainBinding
 import com.example.retrofitrecyclerview.presentation.helper.SimpleDividerItemDecoration
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
 
 class MainActivity : AppCompatActivity(),AlbumAdapter.OnExpenseItemClickListener {
     private lateinit var binding :ActivityMainBinding

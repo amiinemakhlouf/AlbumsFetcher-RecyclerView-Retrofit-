@@ -1,13 +1,10 @@
 package com.example.retrofitrecyclerview.presentation
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.retrofitrecyclerview.data.model.Album
-import com.example.retrofitrecyclerview.data.model.services.AlbumService
+import com.example.retrofitrecyclerview.data.Album
 import com.example.retrofitrecyclerview.databinding.ItemBinding
 import com.squareup.picasso.Picasso
 

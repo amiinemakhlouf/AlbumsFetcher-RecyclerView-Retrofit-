@@ -1,6 +1,6 @@
-package com.example.retrofitrecyclerview.data.model.DataSource
+package com.example.retrofitrecyclerview.data.DataSource
 
-import com.example.retrofitrecyclerview.data.model.Constants.BASE_URL
+import com.example.retrofitrecyclerview.data.Constants.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

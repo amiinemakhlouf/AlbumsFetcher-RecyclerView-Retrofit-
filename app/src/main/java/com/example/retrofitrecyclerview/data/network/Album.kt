@@ -1,4 +1,4 @@
-package com.example.retrofitrecyclerview.data.model
+package com.example.retrofitrecyclerview.data
 
 data class Album(
     val albumId: Int,

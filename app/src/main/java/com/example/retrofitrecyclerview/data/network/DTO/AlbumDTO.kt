@@ -1,7 +1,6 @@
-package com.example.retrofitrecyclerview.data.model.DTO
+package com.example.retrofitrecyclerview.data.DTO
 
-import com.example.retrofitrecyclerview.data.model.Album
-import kotlinx.coroutines.flow.Flow
+import com.example.retrofitrecyclerview.data.Album
 import retrofit2.Response
 import retrofit2.http.GET
 
